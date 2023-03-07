@@ -99,7 +99,7 @@
         <cors.access.control.allow.methods>GET, POST, PUT, DELETE, OPTIONS, PATCH</cors.access.control.allow.methods>
         <cors.access.control.allow.credentials>true</cors.access.control.allow.credentials>
         <cors.access.control.maxAge>3600</cors.access.control.maxAge>
-        <log4j.version>2.17.0</log4j.version>
+        <log4j.version>2.19.0</log4j.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -416,7 +416,7 @@
                 <skipDocker>false</skipDocker>
                 <jee.server>jetty</jee.server>
                 <entando.engine.address>localhost</entando.engine.address>
-                <app.builder.depends.on></app.builder.depends.on>
+                <app.builder.depends.on/>
 
                 <skipServerImage>true</skipServerImage>
                 <jboss.home.in.image>none</jboss.home.in.image>
@@ -469,7 +469,7 @@
             <properties>
                 <db.vendor>derby</db.vendor>
                 <skipDatabaseImage>true</skipDatabaseImage>
-                <entando.engine.depends.on></entando.engine.depends.on>
+                <entando.engine.depends.on/>
                 <!--DB connection properties-->
                 <portdb.database>entandoPort</portdb.database>
                 <portdb.url>jdbc:derby:${derby.base.folder}/${portdb.database};create=true</portdb.url>
@@ -512,7 +512,7 @@
                 <servdb.driverClassName>org.postgresql.Driver</servdb.driverClassName>
 
                 <!-- No DB work required from the server image. Just set the build_id -->
-                <server.init.command>echo $(date +%s) > /entando-data-templates/build_id</server.init.command>
+                <server.init.command>echo $(date +%s) &gt; /entando-data-templates/build_id</server.init.command>
             </properties>
         </profile>
         <profile>
@@ -539,7 +539,7 @@
                 <servdb.driverClassName>com.mysql.cj.jdbc.Driver</servdb.driverClassName>
 
                 <!-- No DB work required from the server image. Just set the build_id -->
-                <server.init.command>echo $(date +%s) > /entando-data-templates/build_id</server.init.command>
+                <server.init.command>echo $(date +%s) &gt; /entando-data-templates/build_id</server.init.command>
             </properties>
         </profile>
         <profile>
@@ -1028,8 +1028,7 @@
                         <configuration>
                             <exportAntProperties>true</exportAntProperties>
                             <target>
-                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"
-                                         classpathref="maven.plugin.classpath"/>
+                                <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath"/>
                                 <if>
                                     <available file="src/main/webapp/WEB-INF/aps/jsp/internalservlet/api" type="dir"/>
                                     <then>
@@ -1105,7 +1104,7 @@
                         <portdb.url>${portdb.url}</portdb.url>
                         <portdb.jndi>${portdb.jndi}</portdb.jndi>
                         <portdb.username>${portdb.username}</portdb.username>
-                        <portdb.password>${portdb.password}</portdb.password>>
+                        <portdb.password>${portdb.password}</portdb.password>&gt;
                         <servdb.jndi>${servdb.jndi}</servdb.jndi>
                         <servdb.url>${servdb.url}</servdb.url>
                         <servdb.username>${servdb.username}</servdb.username>
