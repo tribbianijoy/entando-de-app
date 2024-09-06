@@ -1,4 +1,4 @@
-FROM postgres:14.1
+FROM postgres:14.13
 
 ENV POSTGRES_DB=${docker.db.database}
 ENV POSTGRES_USER=${docker.db.username}
